@@ -1,0 +1,19 @@
+{{- $fullName := include "web.fullname" . -}}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "web.labels" . | nindent 4 }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: {{ .Values.ingress.rule }}
+      services:
+        - name: {{ $fullName }}
+          port: 80
+  tls:
+    certResolver: letsencrypt
