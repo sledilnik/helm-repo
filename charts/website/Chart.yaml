@@ -1,5 +1,5 @@
 apiVersion: v2
-name: sledilnik-web
+name: website
 description: A Helm chart to deploy website for sledilnik.org
 
 # A chart can be either an 'application' or a 'library' chart.
