@@ -1,0 +1,22 @@
+# Default values for api-helm-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  name: website
+  repository: ghcr.io/overlordtm
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  rule: Host(`www.sledilnik.rtfm.si`) || Host(`covid-19.sledilnik.rtfm.si`)
