@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  sledilnik-web:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2020-11-15T17:31:46.611586558Z"
+    description: A Helm chart to deploy website for sledilnik.org
+    digest: 7b413a82c7c4bc5ead277723d0363fabd44593444774ab23116d7c864165d674
+    name: sledilnik-web
+    type: application
+    urls:
+    - https://github.com/overlordtm/website-helm/releases/download/sledilnik-web-0.1.0/sledilnik-web-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-11-15T17:31:46.480929899Z"
