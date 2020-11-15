@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  name: sledilnik-web
+  name: website
   repository: ghcr.io/overlordtm
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
