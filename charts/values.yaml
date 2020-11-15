@@ -19,4 +19,4 @@ service:
   port: 80
 
 ingress:
-  rule: Host(`www.sledilnik.rtfm.si`) || Host(`covid-19.sledilnik.rtfm.si`)
+  rule: Host(`www.sledilnik.org`)
