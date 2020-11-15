@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  data-api:
+  - apiVersion: v2
+    appVersion: 1.6.0
+    created: "2020-11-15T18:09:35.469885522Z"
+    description: A Helm chart to deploy data-api-server for sledilnik.org
+    digest: eee4d38ce3ac42fbc707eb7d9666d6721deab6aaa5c0567bb33b17f55353deca
+    name: data-api
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/data-api-0.1.0/data-api-0.1.0.tgz
+    version: 0.1.0
   sledilnik-api:
   - apiVersion: v2
     appVersion: 1.6.0
@@ -21,5 +32,16 @@ entries:
     type: application
     urls:
     - https://github.com/overlordtm/website-helm/releases/download/sledilnik-web-0.1.0/sledilnik-web-0.1.0.tgz
+    version: 0.1.0
+  website:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2020-11-15T18:09:35.754865916Z"
+    description: A Helm chart to deploy website for sledilnik.org
+    digest: 79e520348bfea8e018a240fc50e338bbbde4a6150b87fa642ef45f9b4ed92168
+    name: website
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/website-0.1.0/website-0.1.0.tgz
     version: 0.1.0
 generated: "2020-11-15T17:31:46.480929899Z"
