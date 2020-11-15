@@ -19,4 +19,4 @@ service:
   port: 80
 
 ingress:
-  rule: Host(`www.sledilnik.org`)
+  rule: Host(`test.sledilnik.org`)
