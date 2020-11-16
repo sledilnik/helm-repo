@@ -5,13 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/overlordtm/sledilnik-api
+  repository: ghcr.io/sledilnik
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
-imagePullSecrets:
-  - name: sledilnik-dockerhub
 nameOverride: ""
 fullnameOverride: ""
 
@@ -20,4 +18,4 @@ service:
   port: 80
 
 ingress:
-  rule: Host(`api.sledilnik.rtfm.si`)
+  rule: Host(`api-test.sledilnik.org`)

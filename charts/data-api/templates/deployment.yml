@@ -6,33 +6,26 @@ metadata:
   labels:
     {{- include "api.labels" . | nindent 4 }}
 spec:
-  replicas: 1
   selector:
     matchLabels:
       {{- include "api.selectorLabels" . | nindent 6 }}
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   template:
     metadata:
       labels:
         deployDate: "{{ now | unixEpoch }}"
         {{- include "api.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}/data-api:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 5000
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /api/stats
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /aspi/stats
-          #     port: http

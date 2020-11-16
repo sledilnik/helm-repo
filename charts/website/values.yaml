@@ -5,8 +5,7 @@
 replicaCount: 1
 
 image:
-  name: website
-  repository: ghcr.io/overlordtm
+  repository: ghcr.io/sledilnik
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -19,4 +18,4 @@ service:
   port: 80
 
 ingress:
-  rule: Host(`stage.sledilnik.org`)
+  rule: Host(`test.sledilnik.org`)
