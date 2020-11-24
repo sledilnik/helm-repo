@@ -21,7 +21,28 @@ entries:
     urls:
     - https://github.com/sledilnik/helm-repo/releases/download/data-api-0.1.0/data-api-0.1.0.tgz
     version: 0.1.0
+  deploy-ctrl:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2020-11-24T16:32:07.653419797Z"
+    description: A Helm chart for Kubernetes
+    digest: e61e5a74ca0db8e27911a3e80b0dace3a21c31c12c4663b69bdff08593ef3fa3
+    name: deploy-ctrl
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/deploy-ctrl-0.1.0/deploy-ctrl-0.1.0.tgz
+    version: 0.1.0
   website:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2020-11-24T16:32:07.768082539Z"
+    description: A Helm chart to deploy website for sledilnik.org
+    digest: 2a97e2adc15da9ac23b38b6def3272e8e66ed0d6011f78f0c150cc50e9c79106
+    name: website
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/website-1.0.0/website-1.0.0.tgz
+    version: 1.0.0
   - apiVersion: v2
     appVersion: latest
     created: "2020-11-16T01:21:29.477358287Z"
