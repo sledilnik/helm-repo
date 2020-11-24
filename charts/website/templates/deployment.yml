@@ -6,10 +6,12 @@ metadata:
   labels:
     {{- include "web.labels" . | nindent 4 }}
 spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
   selector:
     matchLabels:
       {{- include "web.selectorLabels" . | nindent 6 }}
-  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,6 +23,10 @@ spec:
         deployDate: "{{ now | unixEpoch }}"
         {{- include "web.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/website:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -29,3 +35,15 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

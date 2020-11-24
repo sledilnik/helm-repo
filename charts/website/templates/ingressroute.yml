@@ -11,7 +11,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: {{ .Values.ingress.rule }}
+      match: {{ .Values.ingressroute.rule }}
       services:
         - name: {{ $fullName }}
           port: 80
