@@ -2,16 +2,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "web.fullname" . }}
+  name: {{ include "website.fullname" . }}
   labels:
-    {{- include "web.labels" . | nindent 4 }}
+    {{- include "website.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "web.selectorLabels" . | nindent 6 }}
+      {{- include "website.selectorLabels" . | nindent 6 }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,7 +21,7 @@ spec:
     metadata:
       labels:
         deployDate: "{{ now | unixEpoch }}"
-        {{- include "web.selectorLabels" . | nindent 8 }}
+        {{- include "website.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

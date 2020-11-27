@@ -1,11 +1,11 @@
-{{- $fullName := include "web.fullname" . -}}
+{{- $fullName := include "website.fullname" . -}}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "web.labels" . | nindent 4 }}
+    {{- include "website.labels" . | nindent 4 }}
 spec:
   entryPoints:
     - websecure

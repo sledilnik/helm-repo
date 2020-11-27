@@ -2,9 +2,9 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "deploy-ctrl.fullname" . }}
+  name: {{ include "website.fullname" . }}
   labels:
-    {{- include "deploy-ctrl.labels" . | nindent 4 }}
+    {{- include "website.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
