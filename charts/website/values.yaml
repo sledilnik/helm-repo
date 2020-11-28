@@ -40,7 +40,9 @@ service:
   port: 80
 
 ingressroute:
-  rule: Host(`test.sledilnik.org`)
+  pullRequestHost: stage.sledilnik.org
+  # pullRequest: 42 # pullRequest number to generate rule for (exclusive with rule)
+  rule: Host(`www.sledilnik.org`)
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
