@@ -1,0 +1,21 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "spark.fullname" . -}}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "spark.labels" . | nindent 4 }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: {{ .Values.ingressroute.rule }}
+      services:
+        - name: {{ $fullName }}
+          port: 80
+  tls:
+    certResolver: {{ .Values.ingressroute.certResolver }}
+{{- end }}
