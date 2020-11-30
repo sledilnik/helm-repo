@@ -41,6 +41,7 @@ service:
 
 ingressroute:
   rule: Host(`api.sledilnik.org`)
+  certResolver: letsencrypt
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

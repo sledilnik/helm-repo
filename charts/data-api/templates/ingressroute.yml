@@ -16,3 +16,5 @@ spec:
       services:
         - name: {{ $fullName }}
           port: 80
+  tls:
+    certResolver: {{ .Values.ingressroute.certResolver }}
