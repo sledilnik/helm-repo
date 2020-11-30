@@ -60,11 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{- define "website.ingressrule" -}}
-{{- if .Values.ingressroute.pullRequest -}}
-Host(`pr-{{ .Values.ingressroute.pullRequest }}.{{ .Values.ingressroute.pullRequestHost }}`)
-{{- else -}}
-{{- .Values.ingressroute.rule }}
-{{- end }}
-{{- end }}

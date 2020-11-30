@@ -1,5 +1,4 @@
 {{- $fullName := include "website.fullname" . -}}
-{{- $rule := include "website.ingressrule" . -}}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -12,7 +11,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: {{ $rule }}
+      match: {{ .Values.ingressroute.rule }}
       services:
         - name: {{ $fullName }}
           port: 80
