@@ -3,6 +3,16 @@ entries:
   data-api:
   - apiVersion: v2
     appVersion: latest
+    created: "2020-11-30T01:37:47.347602896Z"
+    description: A Helm chart to deploy data-api-server for sledilnik.org
+    digest: 67ed81862169cd54def9e6e24e74981453a7363ee25eb55630d7b3976f5401c7
+    name: data-api
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/data-api-0.2.0/data-api-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2020-11-30T00:54:23.623448513Z"
     description: A Helm chart to deploy data-api-server for sledilnik.org
     digest: 4fda1aefb6c32d2473c255b692e87e614a86f237d453eeeb4f30c7fb195a1f7a
@@ -21,7 +31,28 @@ entries:
     urls:
     - https://github.com/sledilnik/helm-repo/releases/download/data-api-0.0.1/data-api-0.0.1.tgz
     version: 0.0.1
+  spark:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-11-30T01:37:47.613631644Z"
+    description: A Helm chart for Kubernetes
+    digest: 6f90c232c8eb913ef18cabd0c9f2f4c348d32ac80578bdf2b4a912ff53c45f20
+    name: spark
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/spark-0.2.0/spark-0.2.0.tgz
+    version: 0.2.0
   website:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2020-11-30T01:37:47.885393556Z"
+    description: A Helm chart to deploy website for sledilnik.org
+    digest: 4af2030b42406f6f41874aef569489b393e9097b6863fa903be9e17bd2793967
+    name: website
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/website-0.2.0/website-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: latest
     created: "2020-11-30T00:54:23.883714049Z"
