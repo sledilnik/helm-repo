@@ -33,6 +33,16 @@ entries:
     version: 0.0.1
   spark:
   - apiVersion: v2
+    appVersion: latest
+    created: "2020-12-02T23:49:38.381626317Z"
+    description: A Helm chart for Kubernetes
+    digest: fbf7ee3bb69eb643915bc26e6cae05946f6e1932b98e73883f99ed92ee1a72aa
+    name: spark
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/spark-0.2.2/spark-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2020-11-30T02:56:47.274360858Z"
     description: A Helm chart for Kubernetes
