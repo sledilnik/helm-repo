@@ -1,4 +1,4 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ingressroute.enabled -}}
 {{- $fullName := include "spark.fullname" . -}}
 ---
 apiVersion: traefik.containo.us/v1alpha1
