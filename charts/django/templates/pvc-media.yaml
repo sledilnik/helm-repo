@@ -1,0 +1,22 @@
+{{- if and .Values.media.enabled (not .Values.media.existingClaim) -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ template "django.fullname" . }}-media
+  annotations:
+  {{- with .Values.media.annotations  }}
+  {{ toYaml . | indent 4 }}
+  {{- end }}
+  labels:
+    {{- include "django.labels" . | nindent 4 }}
+    {{- include "django.selectorLabels" . | nindent 4 }}
+spec:
+  accessModes:
+    - {{ .Values.media.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.media.size | quote }}
+  {{- if .Values.media.storageClass }}
+  storageClassName: {{ .Values.media.storageClass | quote }}
+  {{- end }}
+{{- end -}}

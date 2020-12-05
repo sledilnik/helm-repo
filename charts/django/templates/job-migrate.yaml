@@ -25,3 +25,7 @@ spec:
         envFrom:
           - configMapRef:
               name: {{.Release.Name}}-config
+        volumeMounts:
+          - name: sqlite
+            mountPath: {{ .Values.sqlite.path }}/{{ .Values.sqlite.dbName }}
+            subPath: {{ .Values.sqlite.dbName }}

@@ -25,3 +25,6 @@ spec:
         envFrom:
           - configMapRef:
               name: {{.Release.Name}}-config
+        volumeMounts:
+          - name: static
+            mountPath: {{ .Values.static.path }}

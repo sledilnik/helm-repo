@@ -87,3 +87,31 @@ configmap:
   data:
     DJANGO_SETTINGS_MODULE: sledilnik.settings.kube
     SECRET_KEY: changeme
+
+# Persisten volume for media
+media:
+  enabled: true
+#  existingClaim: ""
+  accessMode: ReadWriteOnce
+  size: 5Gi
+  storageClass: "local-path"
+  path: /app/var/media
+  annotations: {}
+
+sqlite:
+  enabled: true
+  accessMode: ReadWriteOnce
+  path: /app
+  size: 1Gi
+  storageClass: "local-path"
+  dbName: db.sqlite3
+  annotations: {}
+
+
+static:
+  enabled: true
+  accessMode: ReadWriteOnce
+  path: /app/var/static
+  size: 1Gi
+  storageClass: "local-path"
+  annotations: {}
