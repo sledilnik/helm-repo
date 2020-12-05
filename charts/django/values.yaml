@@ -84,5 +84,5 @@ affinity: {}
 
 configmap:
   data:
-    DJANGO_SETTINGS_MODULE: sledilnik.kube
+    DJANGO_SETTINGS_MODULE: sledilnik.settings.kube
     SECRET_KEY: changeme
