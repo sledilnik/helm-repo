@@ -31,6 +31,17 @@ entries:
     urls:
     - https://github.com/sledilnik/helm-repo/releases/download/data-api-0.0.1/data-api-0.0.1.tgz
     version: 0.0.1
+  django:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-12-05T14:09:14.084464285Z"
+    description: A Helm chart for Kubernetes
+    digest: d4478988dc1762f700d53e87dec66ff2a2b3014985126d60b6f75e6873c4f479
+    name: django
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/django-0.1.0/django-0.1.0.tgz
+    version: 0.1.0
   spark:
   - apiVersion: v2
     appVersion: latest
