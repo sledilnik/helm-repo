@@ -55,27 +55,14 @@ spec:
             - name: media
               mountPath: {{ .Values.media.path }}
             - name: sqlite
-              mountPath: {{ .Values.sqlite.path }}/{{ .Values.sqlite.dbName }}
-              subPath: {{ .Values.sqlite.dbName }}
-            - name: static
-              mountPath: {{ .Values.static.path }}
+              mountPath: {{ .Values.sqlite.path }}
       volumes:
         - name: media
-          {{- if .Values.media.enabled }}
           persistentVolumeClaim:
             claimName: {{ .Values.media.existingClaim | default (printf "%s-media" (include "django.fullname" .)) }}
-          {{- else }}
-          emptyDir: {}
-          {{- end }}
-          {{- if .Values.sqlite.enabled }}
         - name: sqlite
           persistentVolumeClaim:
             claimName: {{ .Values.sqlite.existingClaim | default (printf "%s-sqlite" (include "django.fullname" .)) }}
-          {{- else }}
-          emptyDir: {}
-          {{- end }}
-        - name: static
-          emptyDir: {}
 
       {{- with .Values.nodeSelector }}
       nodeSelector:

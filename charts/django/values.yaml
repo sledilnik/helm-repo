@@ -90,8 +90,6 @@ configmap:
 
 # Persisten volume for media
 media:
-  enabled: true
-#  existingClaim: ""
   accessMode: ReadWriteOnce
   size: 1Gi
   storageClass: "local-path"
@@ -99,16 +97,13 @@ media:
   annotations: {}
 
 sqlite:
-  enabled: true
   accessMode: ReadWriteOnce
-  path: /app
+  path: /app/var/db
   size: 1Gi
   storageClass: "local-path"
-  dbName: db.sqlite3
   annotations: {}
 
 static:
-  enabled: true
   accessMode: ReadWriteOnce
   path: /app/var/static
   size: 1Gi
