@@ -1,0 +1,21 @@
+{{- if .Values.ingressroute.enabled -}}
+{{- $fullName := include "django.fullname" . -}}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "django.labels" . | nindent 4 }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: {{ .Values.ingressroute.rule }}
+      services:
+        - name: {{ $fullName }}
+          port: 80
+  tls:
+    certResolver: {{ .Values.ingressroute.certResolver }}
+{{- end }}
