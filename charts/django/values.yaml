@@ -81,3 +81,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+configmap:
+  data:
+    DJANGO_SETTINGS_MODULE: sledilnik.kube
+    SECRET_KEY: changeme
