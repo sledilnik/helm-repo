@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: sledilnik/website-backend
+  repository: ghcr.io/sledilnik/website-backend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -41,6 +41,7 @@ service:
   port: 80
 
 ingressroute:
+  enabled: false
   rule: Host(`backend.sledilnik.org`)
   certResolver: letsencrypt
 

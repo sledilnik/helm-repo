@@ -9,7 +9,7 @@ metadata:
     # job is considered part of the release.
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "-5"
-    "helm.sh/hook-delete-policy": hook-succeeded
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 spec:
   template:
     metadata:
@@ -22,3 +22,6 @@ spec:
       - name: django-collectstatic
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         command: ["./manage.py", "collectstatic"]
+        envFrom:
+          - configMapRef:
+              name: {{.Release.Name}}-config
