@@ -21,10 +21,13 @@ spec:
       containers:
       - name: django-collectstatic
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-        command: ["./manage.py", "collectstatic"]
+        command: ["python3",  "manage.py", "collectstatic", "--noinput"]
         envFrom:
           - configMapRef:
               name: {{.Release.Name}}-config
         volumeMounts:
           - name: static
             mountPath: {{ .Values.static.path }}
+      volumes:
+        - name: static
+          emptyDir: {}

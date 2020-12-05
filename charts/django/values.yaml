@@ -93,7 +93,7 @@ media:
   enabled: true
 #  existingClaim: ""
   accessMode: ReadWriteOnce
-  size: 5Gi
+  size: 1Gi
   storageClass: "local-path"
   path: /app/var/media
   annotations: {}
@@ -106,7 +106,6 @@ sqlite:
   storageClass: "local-path"
   dbName: db.sqlite3
   annotations: {}
-
 
 static:
   enabled: true
