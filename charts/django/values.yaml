@@ -89,23 +89,13 @@ configmap:
     SECRET_KEY: changeme
 
 # Persisten volume for media
-media:
+persistence:
+  # existingClaim:
   accessMode: ReadWriteOnce
-  size: 1Gi
+  size: 5Gi
   storageClass: "local-path"
-  path: /app/var/media
+  mediaPath: /app/var/media
   annotations: {}
 
-sqlite:
-  accessMode: ReadWriteOnce
-  path: /app/var/db
-  size: 1Gi
-  storageClass: "local-path"
-  annotations: {}
+existingSecret: 
 
-static:
-  accessMode: ReadWriteOnce
-  path: /app/var/static
-  size: 1Gi
-  storageClass: "local-path"
-  annotations: {}

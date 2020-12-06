@@ -24,12 +24,14 @@ spec:
         command: ["python3", "manage.py", "migrate"]
         envFrom:
           - configMapRef:
-              name: {{.Release.Name}}-config
+              name: {{ .Release.Name }}-config
+          - secretRef:
+              name: {{ .Values.existingSecret }}
         volumeMounts:
-          - name: sqlite
-            mountPath: {{ .Values.sqlite.path }}/{{ .Values.sqlite.dbName }}
-            subPath: {{ .Values.sqlite.dbName }}
+          - name: data
+            mountPath: {{ .Values.persistence.mediaPath }}
+            subPath: media
       volumes:
-        - name: sqlite
+        - name: data
           persistentVolumeClaim:
-            claimName: {{ .Values.sqlite.existingClaim | default (printf "%s-sqlite" (include "django.fullname" .)) }}
+            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-sqlite" (include "django.fullname" .)) }}

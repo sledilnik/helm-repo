@@ -50,20 +50,17 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
             - configMapRef:
-                name: {{.Release.Name}}-config
+                name: {{ .Release.Name }}-config
+            - secretRef:
+                name: {{ .Values.existingSecret }}
           volumeMounts:
-            - name: media
-              mountPath: {{ .Values.media.path }}
-            - name: sqlite
-              mountPath: {{ .Values.sqlite.path }}
+            - name: data
+              mountPath: {{ .Values.persistence.mediaPath }}
+              subPath: media
       volumes:
-        - name: media
+        - name: data
           persistentVolumeClaim:
-            claimName: {{ .Values.media.existingClaim | default (printf "%s-media" (include "django.fullname" .)) }}
-        - name: sqlite
-          persistentVolumeClaim:
-            claimName: {{ .Values.sqlite.existingClaim | default (printf "%s-sqlite" (include "django.fullname" .)) }}
-
+            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-pvc" (include "django.fullname" .)) }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
