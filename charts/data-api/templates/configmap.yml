@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: {{.Release.Name}}-config
   labels:
-    {{- include "django.labels" . | nindent 4 }}
+    {{- include "api.labels" . | nindent 4 }}
 data:
   {{- range $key, $val := .Values.configmap.data }}
   {{$key}}: {{ $val | quote }}
