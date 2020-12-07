@@ -1,4 +1,4 @@
-# website-helm
+# helm-repo
 
 Repository for helm charts used for Sledilnik deployments. Charts are located in folder charts (on brainc `master`).
 
