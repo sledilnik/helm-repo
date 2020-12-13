@@ -11,6 +11,11 @@ spec:
   selector:
     matchLabels:
       {{- include "django.selectorLabels" . | nindent 6 }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -38,19 +43,13 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
+            {{- if .Values.configmap.enabled }}
             - configMapRef:
                 name: {{ .Release.Name }}-config
+            {{- end}}
             - secretRef:
                 name: {{ .Values.existingSecret }}
           volumeMounts:

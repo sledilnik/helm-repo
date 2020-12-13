@@ -1,31 +1,27 @@
+{{- if .Values.migrateJob.enabled -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Release.Name }}"
+  name: {{ include "django.fullname" . }}-migrate
   labels:
     {{- include "django.labels" . | nindent 4 }}
   annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    "helm.sh/hook": post-install
+    "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-weight": "-5"
-    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   template:
-    metadata:
-      name: "{{ .Release.Name }}"
-      labels:
-        deployDate: "{{ now | unixEpoch }}"
-        {{- include "django.selectorLabels" . | nindent 8 }}
     spec:
       restartPolicy: Never
       containers:
       - name: django-migrate
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-        command: ["python3", "manage.py", "migrate"]
+        command: ["python3", "manage.py", "migrate", "--noinput"]
         envFrom:
+          {{- if .Values.configmap.enabled }}
           - configMapRef:
               name: {{ .Release.Name }}-config
+          {{- end}}
           - secretRef:
               name: {{ .Values.existingSecret }}
         volumeMounts:
@@ -36,3 +32,4 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | default (printf "%s-sqlite" (include "django.fullname" .)) }}
+{{- end }}

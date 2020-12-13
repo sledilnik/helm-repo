@@ -84,9 +84,9 @@ tolerations: []
 affinity: {}
 
 configmap:
+  enabled: false
   data:
-    DJANGO_SETTINGS_MODULE: sledilnik.settings.kube
-    SECRET_KEY: changeme
+    DJANGO_SETTINGS_MODULE: sledilnik.settings
 
 # Persisten volume for media
 persistence:
@@ -99,3 +99,6 @@ persistence:
 
 existingSecret: 
 
+
+migrateJob:
+  enabled: true
