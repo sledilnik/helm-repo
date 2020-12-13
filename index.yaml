@@ -43,6 +43,16 @@ entries:
     version: 0.0.1
   django:
   - apiVersion: v2
+    appVersion: latest
+    created: "2020-12-13T17:34:28.025325012Z"
+    description: A Helm chart for Kubernetes
+    digest: 7dbeb45dbb25bee060688676d25247a07966d5f8f2861785b25578c56ffc95ee
+    name: django
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/django-1.0.1/django-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2020-12-11T11:04:53.913171076Z"
     description: A Helm chart for Kubernetes
