@@ -256,6 +256,16 @@ entries:
   website:
   - apiVersion: v2
     appVersion: latest
+    created: "2020-12-14T02:41:28.374981875Z"
+    description: A Helm chart to deploy website for sledilnik.org
+    digest: faed0d1a86174e0e42494952a3c88b169b06e9e65b16e9eda88a03777c2a8788
+    name: website
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/website-1.0.0/website-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2020-12-06T19:18:15.028193779Z"
     description: A Helm chart to deploy website for sledilnik.org
     digest: efaa7c8f43cdbcf9e597aff64584614c5e89e0b428fbdc3237dfef725628b02a
