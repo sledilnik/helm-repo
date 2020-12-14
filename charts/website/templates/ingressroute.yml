@@ -16,6 +16,16 @@ spec:
       services:
         - name: {{ $fullName }}
           port: 80
+      # middlewares:
+      #   - name: website-default-redirect
+      #     namespace: sledilnik-prod
   tls:
-    certResolver: {{ .Values.ingressroute.certResolver }}
+    certResolver: {{ .Values.ingressroute.tls.certResolver }}
+    {{- if .Values.ingressroute.tls.main }}
+    main: {{ .Values.ingressroute.tls.main }}
+    {{- end }}
+    {{- with .Values.ingressroute.tls.sans }}
+    sans:
+      {{- toYaml . | nindent 8 }}
+    {{- end }}
 {{- end }}
