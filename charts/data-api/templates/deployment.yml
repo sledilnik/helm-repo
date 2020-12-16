@@ -15,7 +15,7 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
-      maxUnavailable: 0
+      maxUnavailable: 1
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -41,17 +41,15 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
           envFrom:
+            {{- if .Values.configmap.enabled }}
             - configMapRef:
                 name: {{ .Release.Name }}-config
+            {{- end }}
+            {{- if .Values.existingSecret }}
+            - secretRef:
+                name: {{ .Values.existingSecret }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
