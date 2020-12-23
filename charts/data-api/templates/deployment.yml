@@ -41,6 +41,12 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /diagnostics/readyz
+              port: 5000
+            initialDelaySeconds: 30
+            periodSeconds: 5
           envFrom:
             {{- if .Values.configmap.enabled }}
             - configMapRef:
