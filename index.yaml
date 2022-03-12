@@ -71,6 +71,17 @@ entries:
     urls:
     - https://github.com/sledilnik/helm-repo/releases/download/data-api-0.0.1/data-api-0.0.1.tgz
     version: 0.0.1
+  datasette:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-03-12T22:21:43.942517805Z"
+    description: A Helm chart for Kubernetes
+    digest: c5d1ca7674c601deb1b17a9621b2cce80f289433786bde64da2dec285b2de09f
+    name: datasette
+    type: application
+    urls:
+    - https://github.com/sledilnik/helm-repo/releases/download/datasette-0.1.0/datasette-0.1.0.tgz
+    version: 0.1.0
   django:
   - apiVersion: v2
     appVersion: latest
