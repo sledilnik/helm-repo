@@ -1,0 +1,22 @@
+{{- if .Values.ingressroute.enabled -}}
+{{- $fullName := include "datasette.fullname" . -}}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "datasette.labels" . | nindent 4 }}
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: {{ .Values.ingressroute.rule }}
+      services:
+        - name: {{ $fullName }}
+          port: 80
+  tls:
+    certResolver: {{ .Values.ingressroute.tls.certResolver }}
+{{- end }}
